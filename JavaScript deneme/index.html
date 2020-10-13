@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h2>Denetim sistemine hoş geldiniz!</h2>
+<h3>Mümkün sorgu ve işlemler:
+    
+
+    <br> <input type="radio" id="S1" onclick="YeniCalisan()" name="sorgu" value="S1">
+    1. Yeni bir çalışan bilgisi kaydedebilmek
+    <br><input type="radio" id="S2" onclick="CalisanListe()" name="sorgu" value="S2">
+    2. Şirketin çalışanlarını listelemek
+    <br><input type="radio" id="S3" onclick="CalisaniGuncelle()" name="sorgu" value="S3">
+    3. Bir çalışana ait bilgileri güncellemek
+    
+    <br><input type="radio" id="S4" onclick="YönetimHiyerarsikListe()" name="sorgu" value="S4">
+    4. Yöneticilerin çalışanlarını hiyerarşik şekilde listelemek
+
+    <br><input type="radio" id="S5" onclick="MaasOrtalaması()" name="sorgu" value="S5">
+    5. Departmanların maaş ortalamalarını programatik şekilde hesaplayan servis  (veri tabanında hesaplanmasın)
+    <br><input type="radio" id="S6" onclick="UnvanSetter()" name="sorgu" value="S6">
+    6. Çalışanın unvan bilgilerini değiştirmek
+    <br><input type="radio" id="S7" name="sorgu" value="S7">
+    7. Çalışan bilgilerini unvan tarihçesiyle göstermek
+    <br><input type="radio" id="S8" name="sorgu" value="S8">
+    8. Şirketin departmanlarını yönetmek
+    <br><input type="radio" id="S9" name="sorgu" value="S9">
+    9. Şirketin ofis bilgilerini yönetmek
+    
+    <br><input type="radio" id="S9" name="sorgu" value="S9">
+    10. Yönetici ata  
+
+</h3>
+<p>Yapmak istediğiniz sorguyu seçiniz</p>
+
+
+    
+    <script src="index.js"></script>
+
+
+
+    <fieldset id="Blok1" hidden=true>
+    <legend>Eleman Kayıt:</legend>
+    <p1><table id="myTable">
+
+        <tr>
+          <td>Ad:</td>
+          <td><input id="B1_ListAd"></td>
+          <td>
+            <td>Soyad:</td>
+            <td><input id="B1_ListSoyad"></td>
+          </td>
+        </tr>
+      
+        <tr>
+          <td>E-posta:</td>
+          <td><input id="B1_ListE-posta"></td>
+        <td>
+            <td>Telefon:</td>
+            <td><input id="B1_ListTelefon"></td>
+        </td>
+    </tr>
+
+        <tr>
+          <td>İşe Giriş Tarihi</td>
+          <td><input id="B1_ListGiris"></td>
+        <td>
+            <td>Maaş:</td>
+            <td><input id="B1_ListMaas"></td>
+        </tr>
+    </td>
+        <tr>
+            <td>Departman:</td>
+            <td><input id="B1_ListDepartman"></td>
+        <td>
+            <td>Unvan:</td>
+            <td><input id="B1_ListUnvan"></td>
+        </tr>
+    </td>
+        <tr>
+            <td>Yöneticisi:</td>
+            <td><input id="B1_ListYonetici"></td>
+            <td>
+            <dd><dd><button type="button" onclick="YeniCalisanYükle()">Yükle</button></dd></dd>
+            </td>
+        </tr>
+      </table>
+    </p1>
+
+
+    </fieldset>
+
+    <fieldset id="Blok2" hidden=true>
+    <legend>Eleman Listeniz:</legend>
+    <p id="B2_Liste"></p>
+
+    </fieldset>
+    <fieldset id="Blok3" hidden=true>
+        <legend>Eleman Güncelle:</legend>
+        <p1><table id="myTable2">
+    
+            <tr>
+              <td>Ad:</td>
+              <td><input id="B3_ListAd"></td>
+              <td>
+                <td>Soyad:</td>
+                <td><input id="B3_ListSoyad"></td>
+              </td>
+            </tr>
+          
+            <tr>
+              <td>E-posta:</td>
+              <td><input id="B3_ListE-posta"></td>
+            <td>
+                <td>Telefon:</td>
+                <td><input id="B3_ListTelefon"></td>
+            </td>
+        </tr>
+    
+            <tr>
+              <td>İşe Giriş Tarihi</td>
+              <td><input id="B3_ListGiris"></td>
+            <td>
+                <td>Maaş:</td>
+                <td><input id="B3_ListMaas"></td>
+            </tr>
+        </td>
+            <tr>
+                <td>Departman:</td>
+                <td><input id="B3_ListDepartman"></td>
+            <td>
+                <td>Unvan:</td>
+                <td><input id="B3_ListUnvan"></td>
+            </tr>
+        </td>
+            <tr>
+                <td>Yöneticisi:</td>
+                <td><input id="B3_ListYonetici"></td>
+                <td>
+                <dd><dd><button type="button" onclick="CalisaniGuncellemeYap()">Eski Çalışanı Güncelle</button></dd></dd>
+                </td>
+            </tr>
+          </table>
+        </p1>    
+    </fieldset>
+    
+    <fieldset id="Blok4" hidden=true>
+    <legend>Hiyerarşik Listeniz:</legend>
+    </fieldset>
+    <fieldset id="Blok5" hidden=true>
+    <legend>Maaş Ortalaması:</legend>
+    </fieldset>
+    <fieldset id="Blok6" hidden=true>
+    <legend>Ünvan Değişim Bilgileri:</legend>
+    <p1><table id="myTable3">
+    
+        <tr>
+          <td>Eleman ID:</td>
+          <td><input id="B6_ListAd"></td>
+          <td>
+            <td>Eleman Yeni Ünvan</td>
+            <td><input id="B6_ListSoyad"></td>
+          </td>
+        </tr>
+      
+        <tr>
+
+            <td>        <dd><dd><button type="button" onclick="ÜnvanaGuncellemeYap()">Ünvana Guncelleme Yap</button></dd></dd></td>
+            <td>
+            <dd><dd><button type="button" onclick="ÜnvanaYenile()">Yeni Ünvan Ekle</button></dd></dd>
+            </td>
+        </tr>
+      </table>
+    </p1>
+
+
+
+    
+    </fieldset>
+    <fieldset id="Blok7" hidden=true>
+    <legend>Ünvan Tarihçesi Listeniz:</legend>
+    </fieldset>
+    <fieldset id="Blok8" hidden=true>
+    <legend>Departman Yönet:</legend>
+    <p1><table id="myTable3">
+    
+        <tr>
+          <td>Departman ID:</td>
+          <td><input id="B8_ListAd"></td>
+          <td>
+            <td>Departman Adı</td>
+            <td><input id="B8_ListSoyad"></td>
+          </td>
+        </tr>
+          
+        <tr>
+            <td>Departman Yöneticisi:</td>
+            <td><input id="B8_Yöneticisi"></td>
+            <td>
+              <td>Departman Lokasyonu</td>
+              <td><input id="B8_Lokasyonu"></td>
+            </td>
+          </tr>
+        <tr>
+            <td>        <dd><dd><button type="button" onclick="DepartmanaGuncellemeYap()">Departmana Guncelleme Yap</button></dd></dd>
+            </td>
+            <td>
+            <dd><dd><button type="button" onclick="DepartmanıYenile()">Yeni Departmana Yenile</button></dd></dd>
+            </td>
+        </tr>
+      </table>
+    </p1>
+
+    </fieldset>
+    <fieldset id="Blok9" hidden=true>
+    <legend>Ofis Yönet:</legend>
+    </fieldset>
+    
+
+
+
+    <p id="demo"></p>
+
+    
+</body>
+</html>
